@@ -36,4 +36,10 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.4.RELEASE</version>
 	</parent>
+	
+	<modules>
+		<module>SpringCloud001-EurekaClient</module>
+		<module>SpringCloud001-EurekaServer</module>
+		<module>SpringCloud002-Ribbon</module>
+	</modules>
 </project>
