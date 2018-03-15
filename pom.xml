@@ -42,5 +42,7 @@
 		<module>SpringCloud001-EurekaServer</module>
 		<module>SpringCloud002-Ribbon</module>
 		<module>SpringCloud003-Feign</module>
+		<module>SpringCloud004-ConfigServer</module>
+		<module>SpringCloud004-ConfigClient</module>
 	</modules>
 </project>
