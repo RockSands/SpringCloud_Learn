@@ -11,26 +11,26 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 public class DcService {
-	@Autowired
-	RestTemplate restTemplate;
+    @Autowired
+    RestTemplate restTemplate;
 
-	// 降级效果
-	// 经过测试,效果是应该是线程访问,一旦超时即Stop该线程.直接回收
-	@HystrixCommand(fallbackMethod = "fallback")
-	@GetMapping("/consumer")
-	public String dc() {
-		try {
-			Random random = new Random();
-			if (random.nextBoolean()) {
-				Thread.sleep(500000L);
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return restTemplate.getForObject("http://SERVICE-DC/dc", String.class);
+    // 降级效果
+    // 经过测试,效果是应该是线程访问,一旦超时即Stop该线程.直接回收
+    @HystrixCommand(fallbackMethod = "fallback")
+    @GetMapping("/consumer")
+    public String dc() {
+	try {
+	    Random random = new Random();
+	    if (random.nextInt(5) < 2) {
+		Thread.sleep(500000L);
+	    }
+	} catch (InterruptedException e) {
+	    e.printStackTrace();
 	}
+	return restTemplate.getForObject("http://SERVICE-DC/dc", String.class);
+    }
 
-	public String fallback() {
-		return "fallback";
-	}
+    public String fallback() {
+	return "fallback";
+    }
 }
