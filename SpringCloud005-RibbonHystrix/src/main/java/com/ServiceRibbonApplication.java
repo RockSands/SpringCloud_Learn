@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @SpringBootApplication
 public class ServiceRibbonApplication {
-	// http://localhost:8764/consumer
+	// http://localhost:8768/consumer
     public static void main(String[] args) {
         SpringApplication.run(ServiceRibbonApplication.class, args);
     }

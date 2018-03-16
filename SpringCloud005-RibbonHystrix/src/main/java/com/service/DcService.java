@@ -7,23 +7,25 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-/**
- * @author Administrator
- *
- */
 @Service
 public class DcService {
-    @Autowired
-    RestTemplate restTemplate;
+	@Autowired
+	RestTemplate restTemplate;
 
-    // 降级效果
-    @HystrixCommand(fallbackMethod = "myFallback")
-    @GetMapping("/consumer")
-    public String dc() {
-	return restTemplate.getForObject("http://SERVICE-DC/dc", String.class);
-    }
+	// 降级效果
+	// 经过测试,效果是应该是线程访问,一旦超时即Stop该线程.直接回收
+	@HystrixCommand(fallbackMethod = "fallback")
+	@GetMapping("/consumer")
+	public String dc() {
+		try {
+			Thread.sleep(500000L);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return restTemplate.getForObject("http://SERVICE-DC/dc", String.class);
+	}
 
-    public String fallback() {
-	return "fallback";
-    }
+	public String fallback() {
+		return "fallback";
+	}
 }

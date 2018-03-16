@@ -8,11 +8,11 @@ import com.service.DcService;
 
 @RestController
 public class DcController {
-    @Autowired
-    DcService dcService;
+	@Autowired
+	DcService dcService;
 
-    @GetMapping("/consumer")
-    public String dc() {
-	return dcService.dc();
-    }
+	@GetMapping("/consumer")
+	public String dc() {
+		return dcService.dc();
+	}
 }
