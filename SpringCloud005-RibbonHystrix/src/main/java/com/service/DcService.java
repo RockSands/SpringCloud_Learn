@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,10 @@ public class DcService {
 	@GetMapping("/consumer")
 	public String dc() {
 		try {
-			Thread.sleep(500000L);
+			Random random = new Random();
+			if (random.nextBoolean()) {
+				Thread.sleep(500000L);
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
