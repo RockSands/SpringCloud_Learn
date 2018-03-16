@@ -21,7 +21,7 @@ public class DcService {
     public String dc() {
 	try {
 	    Random random = new Random();
-	    if (random.nextInt(5) < 2) {
+	    if (random.nextInt(5) < 1) {
 		Thread.sleep(500000L);
 	    }
 	} catch (InterruptedException e) {
