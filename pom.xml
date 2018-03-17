@@ -44,7 +44,7 @@
 		<module>SpringCloud003-Feign</module>
 		<module>SpringCloud004-ConfigServer</module>
 		<module>SpringCloud004-ConfigClient</module>
-		<module>SpringCloud005-RibbonHystrix</module>
+		<module>SpringCloud005-HystrixRibbon</module>
 		<module>SpringCloud005-HystrixDashboar</module>
 	</modules>
 </project>

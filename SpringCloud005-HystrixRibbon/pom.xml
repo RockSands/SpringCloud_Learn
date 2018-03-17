@@ -6,7 +6,7 @@
 		<artifactId>SpringCloud_Learn</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>SpringCloud005-RibbonHystrix</artifactId>
+	<artifactId>SpringCloud005-HystrixRibbon</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
