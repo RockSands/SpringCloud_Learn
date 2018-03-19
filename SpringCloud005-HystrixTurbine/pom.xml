@@ -6,7 +6,7 @@
 		<artifactId>SpringCloud_Learn</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>SPringCloud005-HystrixTurbine</artifactId>
+	<artifactId>SpringCloud005-HystrixTurbine</artifactId>
 
 	<dependencies>
 		<dependency>
