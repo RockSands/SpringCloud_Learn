@@ -12,6 +12,7 @@ public class DcController {
 
 	@GetMapping("/consumer")
 	public String dc() {
-		return restTemplate.getForObject("http://SERVICE-DC/dc", String.class);
+		// EUREKA-CLIENT 服务名称
+		return restTemplate.getForObject("http://EUREKA-CLIENT/dc", String.class);
 	}
 }
