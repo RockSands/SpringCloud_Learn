@@ -27,7 +27,7 @@ public class DcService {
 	} catch (InterruptedException e) {
 	    e.printStackTrace();
 	}
-	return restTemplate.getForObject("http://SERVICE-DC/dc", String.class);
+	return restTemplate.getForObject("http://EUREKA-CLIENT/dc", String.class);
     }
 
     public String fallback() {

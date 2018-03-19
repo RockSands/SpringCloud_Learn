@@ -14,6 +14,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @SpringCloudApplication
 public class Application {
 	public static void main(String[] args) {
+		// http://localhost:1301/hystrix
 		SpringApplication.run(Application.class, args);
 	}
 }

@@ -69,5 +69,6 @@
 		<module>SpringCloud004-ConfigClient</module>
 		<module>SpringCloud005-HystrixRibbon</module>
 		<module>SpringCloud005-HystrixDashboar</module>
+		<module>SPringCloud005-HystrixTurbine</module>
 	</modules>
 </project>
