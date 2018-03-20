@@ -4,6 +4,13 @@ spring:
 
 server:
   port: 1101
+  
+# 传统路由配置,对于/api-a/的转到eureka-client
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: eureka-client
 
 eureka:
   client:
