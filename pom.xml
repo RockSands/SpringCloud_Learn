@@ -71,5 +71,6 @@
 		<module>SpringCloud005-HystrixDashboar</module>
 		<module>SpringCloud005-HystrixTurbine</module>
 		<module>SpringCloud005-FeignHystrix</module>
+		<module>SpringCloud006-ZuulApi</module>
 	</modules>
 </project>
