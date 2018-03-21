@@ -1,0 +1,40 @@
+============RabbitMQ单机部署================
+yum -y install epel-release
+yum -y install erlang
+yum -y install rabbitmq-server
+
+# 启动
+systemctl start rabbitmq-server.service
+# 状态
+systemctl status rabbitmq-server.service
+# 开机启动
+systemctl enable rabbitmq-server.service
+
+# 查看插件
+rabbitmq-plugins list
+# 安装管理界面
+rabbitmq-plugins enable rabbitmq_management
+# 日志跟踪
+rabbitmq-plugins enable rabbitmq_tracing
+rabbitmqctl trace_on  
+rabbitmqctl trace_off
+# 延时插件了解一下
+#rabbitmq_delayed_message_exchange
+
+systemctl restart rabbitmq-server.service
+
+# 配置
+vi /etc/rabbitmq/rabbitmq.config
+
+{loopback_users, []}
+
+wq!
+
+# 访问管理界面
+http://192.168.80.171:15672
+
+
+
+----------------------------rabbitmqctl-------------------
+# 查看状态
+rabbitmqctl status

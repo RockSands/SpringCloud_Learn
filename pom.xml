@@ -72,5 +72,6 @@
 		<module>SpringCloud005-HystrixTurbine</module>
 		<module>SpringCloud005-FeignHystrix</module>
 		<module>SpringCloud006-ZuulApi</module>
+		<module>SpringCloud007-RabbitMQ</module>
 	</modules>
 </project>
