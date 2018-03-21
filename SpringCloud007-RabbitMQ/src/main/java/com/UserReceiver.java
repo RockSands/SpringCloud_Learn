@@ -6,12 +6,14 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 
-// @EnableBinding(Sink.class)
-public class Receiver {
-	private static Logger logger = LoggerFactory.getLogger(Receiver.class);
+import com.domain.User;
+
+@EnableBinding(Sink.class)
+public class UserReceiver {
+	private static Logger logger = LoggerFactory.getLogger(UserReceiver.class);
 
 	@StreamListener(Sink.INPUT)
-	public void receive(Object payload) {
-		logger.info("Received: " + payload);
-	}
+    public void receive(User user) {
+        logger.info("Received: " + user);
+    }
 }
