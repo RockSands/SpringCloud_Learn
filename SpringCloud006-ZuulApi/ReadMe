@@ -1,0 +1,9 @@
+Zuul的主要功能为路由与过滤,其核心就是Filter与Mapper.
+
+Zuul的核心Filter为ZuulFilter,他有四个方法:
+
+	String filterType();// 定义过滤类型,不同的类型触发时间点不同
+		它分为pre(路由前),routing(路由时),post(路由后或异常后),error(异常时)
+	int filterOrder();// 次序,可推测为责任链模式
+	boolean shouldFilter();// 是否执行
+	Object run();// 执行的核心逻辑
