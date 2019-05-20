@@ -1,0 +1,21 @@
+1、coreSize
+
+设置线程池的大小，默认是10
+HystrixThreadPoolProperties.Setter()
+   .withCoreSize(int value)
+
+一般来说，用这个默认的10个线程大小就够了
+
+2、queueSizeRejectionThreshold
+
+控制queue满后reject的threshold，因为maxQueueSize不允许热修改，因此提供这个参数可以热修改，控制队列的最大大小
+HystrixCommand在提交到线程池之前，其实会先进入一个队列中，这个队列满了之后，才会reject默认值是5
+
+HystrixThreadPoolProperties.Setter()
+   .withQueueSizeRejectionThreshold(int value)
+
+3、execution.isolation.semaphore.maxConcurrentRequests
+
+设置使用SEMAPHORE隔离策略的时候，允许访问的最大并发量，超过这个最大并发量，请求直接被reject
+这个并发量的设置，跟线程池大小的设置，应该是类似的，但是基于信号量的话，性能会好很多，而且hystrix框架本身的开销会小很多
+默认值是10，设置的小一些，否则因为信号量是基于调用线程去执行command的，而且不能从timeout中抽离，因此一旦设置的太大，而且有延时发生，可能瞬间导致tomcat本身的线程资源本占满
