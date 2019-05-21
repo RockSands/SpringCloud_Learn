@@ -11,6 +11,21 @@ import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
 import com.utils.HttpClientUtils;
 
+/**
+ * request collapser: 请求合并技术
+ * 
+ * 即将相同的请求,组合成一个批量请求,减少系统的多次单独调用.可以有效控制线程池的损耗,以及网络开销.同时可以优化资源的调用
+ * 改功能的配置核心 为HystrixCollapserProperties
+ * 
+ * 1)withMaxRequestsInBatch,控制一个Batch中最多允许多少个request被合并，然后才会触发一个batch的执行默认值是无限大，
+ * 		就是不依靠这个数量来触发执行，而是依靠时间
+ * 2)withTimerDelayInMilliseconds,控制一个batch创建之后，多长时间以后就自动触发batch的执行，默认是10毫秒
+ * 
+ * 以上考虑的超时时间,最好使用时间控制.
+ * 
+ * @author Administrator
+ *
+ */
 public class GetProductInfosCollapser extends HystrixCollapser<List<ProductInfo>, ProductInfo, Long> {
 
 	private Long productId;
@@ -59,6 +74,10 @@ public class GetProductInfosCollapser extends HystrixCollapser<List<ProductInfo>
 		public final Collection<CollapsedRequest<ProductInfo, Long>> requests;
 		
 		public BatchCommand(Collection<CollapsedRequest<ProductInfo, Long>> requests) {
+//			super(Setter.withCollapserKey(HystrixCollapserKey.Factory.asKey("GetProductInfosCollapser"))
+//					.andCollapserPropertiesDefaults(HystrixCollapserProperties.Setter()
+//							   .withMaxRequestsInBatch(100)
+//							   .withTimerDelayInMilliseconds(20))); 
 			super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductInfoService"))
 	                .andCommandKey(HystrixCommandKey.Factory.asKey("GetProductInfosCollapserBatchCommand")));
 			this.requests = requests;

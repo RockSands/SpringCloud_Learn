@@ -15,7 +15,7 @@ public class UpdateProductInfoCommand extends HystrixCommand<Boolean> {
 	@Override
 	protected Boolean run() throws Exception {
 		// 执行一次商品信息的更新
-		GetProductInfoCommand.flushCache(productId);  
+		// GetProductInfoCommand.flushCache(productId);  
 		return true;
 	}  
 
