@@ -8,6 +8,12 @@ import com.netflix.hystrix.HystrixCommandProperties;
 import com.netflix.hystrix.HystrixCommandProperties.ExecutionIsolationStrategy;
 import com.utils.IsDegrade;
 
+/**
+ * 
+ * 调用其他Command,达到多次降级
+ * @author Administrator
+ *
+ */
 public class GetProductInfoFacadeCommand extends HystrixCommand<ProductInfo> {
 	
 	private Long productId;

@@ -11,12 +11,37 @@ import com.netflix.hystrix.HystrixThreadPoolProperties;
 /**
  * 获取品牌名称的command
  * 
- * hystrix进行资源隔离，其实是提供了一个抽象，叫做command
+ * hystrix进行资源隔离，其实是提供了一个抽象，叫做command,即一个command代表一个对外的接口.
  * 
- * command group
-   是一个非常重要的概念，默认情况下，因为就是通过command group来定义一个线程池的，
-   而且还会通过command group来聚合一些监控和报警信息.
-   同一个command group中的请求，都会进入同一个线程池中
+ * Command group
+ * 即withGroupKey, command一般代表一个接口能力,而Group为逻辑组.
+ * 一个CommandGroup默认使用一个线程池（支持手动配置一个线程池，通过ThreadPoolKey），
+ * Hystrix会按照ThreadPool进行统计、监控、报警。
+ * 
+ * 
+ * HystrixThreadPool
+ * 即ThreadPoolKey, 一个现场池Hystrix会对其进行统计、监控、报警。也会对不同的线程池进行隔离
+ * 
+ * 
+ * coreSize
+ * 即withCoreSize，设置现场池的核心线程数量，系统保证这些线程的存活。
+ * 
+ * QueueSize
+ * 即withMaxQueueSize，即等待队列。表示超过核心进程会进入队列。
+ * 
+ * QueueSizeRejectionThreshold
+ * withQueueSizeRejectionThreshold，设置请求上限，如果请求超过上限hystrix会直接拒绝掉
+ * 
+ * allowMaximumSizeToDivergeFromCoreSize
+ * 是否开启线程池自动动态调整策略，如果开启，下方面的参数生效！
+ * 
+ * maximumSize
+ * 设置线程池的最大大小，只有在开启allowMaximumSizeToDivergeFromCoreSize的时候才能生效
+ * 
+ * keepAliveTimeMinutes
+ * 设置非核心线程的存活时间，需要allowMaximumSizeToDivergeFromCoreSize开启。
+ * 
+ * 
  * @author Administrator
  *
  */
